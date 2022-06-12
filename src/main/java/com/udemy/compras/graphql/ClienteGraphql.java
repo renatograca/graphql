@@ -1,23 +1,18 @@
-package com.udemy.compras;
+package com.udemy.compras.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.udemy.compras.Cliente;
+import com.udemy.compras.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class QueryGraphql implements GraphQLQueryResolver {
+public class ClienteGraphql implements GraphQLQueryResolver {
 
     @Autowired
-    private  ClienteRepository clienteRepository;
-    public String hello() {
-        return "Hello Graphql";
-    }
-    public int soma(int a, int b ) {
-        return a + b ;
-    }
+    private ClienteRepository clienteRepository;
 
     public Cliente cliente(Long id) {
         return clienteRepository.findById(id).orElse(null);
